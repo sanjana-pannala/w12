@@ -16,4 +16,4 @@ spec:
         - name: kubedemoapp
           image: sanjana26122005/mysecondapp # use your Docker Hub image
           ports:
-            - containerPort: 5001
+            - containerPort: 5000

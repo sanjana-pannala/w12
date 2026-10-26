@@ -29,17 +29,7 @@ pipeline {
 
         stage('Docker Login and Push') {
             steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'dockerhub-creds',
-                        usernameVariable: 'DOCKER_USERNAME',
-                        passwordVariable: 'DOCKER_PASSWORD'
-                    )
-                ]) {
-                    bat 'echo %DOCKER_PASSWORD%| docker login -u "%DOCKER_USERNAME%" --password-stdin'
-
-                    bat 'docker push sanjana26122005/mysecondapp:seleniumtestimage'
-                }
+                bat 'docker login -u sanjana26122005 -p Sanjana@12'
             }
         }
 
