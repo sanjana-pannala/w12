@@ -36,8 +36,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 echo 'Deploying application to Kubernetes'
-                bat 'kubectl apply -f deployment.yaml'
-                bat 'kubectl apply -f service.yaml'
+                bat 'kubectl apply -f deployment.yaml --validate=false'
+                bat 'kubectl apply -f service.yaml --validate=false'
                 bat 'kubectl rollout status deployment/kubedemoapp-deployment --timeout=120s'
             }
         }
