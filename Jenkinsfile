@@ -29,7 +29,24 @@ pipeline {
 
         stage('Docker Login and Push') {
             steps {
-                bat 'docker login -u sanjana26122005 -p Sanjana@12'
+                echo 'Logging in to Docker Hub'
+                bat 'docker login -u sanjana26122005'
+            }
+        }
+
+        stage('Check Kubernetes') {
+            steps {
+                echo 'Checking Jenkins Windows account'
+                bat 'whoami'
+
+                echo 'Checking Kubernetes context'
+                bat 'kubectl config current-context'
+
+                echo 'Checking deployment permissions'
+                bat 'kubectl auth can-i create deployments'
+
+                echo 'Checking Kubernetes nodes'
+                bat 'kubectl get nodes'
             }
         }
 
