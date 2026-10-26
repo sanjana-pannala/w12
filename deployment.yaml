@@ -18,4 +18,4 @@ spec:
           image: sanjana26122005/mysecondapp:seleniumtestimage
           imagePullPolicy: Always
           ports:
-            - containerPort: 5001
+            - containerPort: 5000
