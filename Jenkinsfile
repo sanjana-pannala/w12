@@ -28,11 +28,16 @@ pipeline {
         }
 
         stage('Docker Login and Push') {
-            steps {
-                echo 'Logging in to Docker Hub'
-                bat 'docker login -u sanjana26122005'
-            }
+    steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'dockerhub-credentials',
+            usernameVariable: 'DOCKER_USER',
+            passwordVariable: 'DOCKER_TOKEN'
+        )]) {
+            bat 'docker login -u %DOCKER_USER% --password-stdin < nul'
         }
+    }
+}
 
         stage('Check Kubernetes') {
             steps {
